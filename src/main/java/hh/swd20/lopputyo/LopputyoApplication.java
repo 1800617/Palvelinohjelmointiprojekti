@@ -38,8 +38,9 @@ public class LopputyoApplication {
 
 			log.info("Save shows");
 			// title, description, category
-			shorepo.save(new Show("Why am I crying?",
-					"In this show, we find out about all kinds of different reasons people cry.",
+			shorepo.save(new Show("Santa Clarita Diet",
+					"Sheila and Joel are married real estate agents in Santa Clarita, California. "
+					+ "When Sheila dies, their lives take a dark turn. ",
 					catrepo.findByName("Bad shows").get(0)));
 
 			shorepo.save(new Show("Teletubbies",
