@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit episode</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1>Edit episode</h1>
+	<form action="#" th:action="@{/addepisode}"  th:object= ${episode} method="post">
+	<input type="hidden" th:field="*{id}" class="form-control"/>
+	<p>Title: <input type="text" th:field="${episode.name}" /></p>
+	<p>Season: <input type="text" th:field="${episode.season}" /></p>
+	<p>Episode number: <input type="number" th:field="${episode.episodeNumber}" /></p>
+	<p>Description: <input type="text" th:field="${episode.description}" /></p>
+	<p>Show:
+	<select id="showlist" th:field="*{show}" class="form-control">
+	<option th:each="show: ${shows}" th:value="${show.id}" th:text="${show.title}">
+	</option></select></p>
+	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</form>
+
+</body>
+</html>

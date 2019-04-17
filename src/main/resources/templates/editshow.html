@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit show</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1>Edit show</h1>
+	<form action="#" th:action="@{/addshow}"  th:object= ${show} method="post">
+	<input type="hidden" th:field="*{id}" class="form-control"/>
+	<p>Title: <input type="text" th:field="${show.title}" /></p>
+	<p>Description: <input type="text" th:field="${show.description}" /></p>
+	<p>Category:
+	<select id="categoryList" th:field="*{category}" class="form-control">
+	<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}">
+	</option></select></p>
+	<input type="submit" class="btn btn-success" value="Save" /> <input type="reset" value="Reset" />
+	</form>
+
+</body>
+</html>

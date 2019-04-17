@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Shows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="col-md-4" style="padding:20px 0">
+		<h1>Shows  <a href="./addshow" class="btn btn-success">Add Show</a> <a href="./addepisode" class="btn btn-success">Add Episode</a></h1>
+	</div>
+	
+	</br>
+
+<div class="col-md-4" >
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	</br>
+	<div class="col-md-1" >
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div>
+	
+	<table th:each="show : ${ shows }" class="table table-striped">
+		<tr>
+			<th>Show title</th>
+			<th><h1 th:text="${ show.title }"></h1></th>
+			<th></th>
+			<th sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editshow/{id}(id=${show.id})}" class="btn btn-primary">Edit show</a>
+			<a th:href="@{/deleteshow/{id}(id=${show.id})}" class="btn btn-danger">Delete show</a></th>
+			
+		</tr>
+
+		<tr>
+			<th>Description</th>
+			<th th:text="${ show.description }"></th>
+			<th></th>
+			<th></th>
+
+		</tr>
+
+		<tr>
+			<th>Category</th>
+			<th th:text="${ show.category.name }">id</th>
+			<th></th>
+			<th></th>
+		</tr>
+
+		<tr><th><th></tr>
+
+		<tr>
+			<th>Episode list</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		
+		<tr></tr>
+		
+		<tr>
+			<th>#</th>
+			<th>Episode title</th>
+			<th>Episode description</th>
+			<th></th>
+		</tr>
+
+		<tr th:each="episode : ${show.episodes}">
+			<th th:text="${ episode.episodeNumber }"></th>
+			<th th:text="${ episode.name }"></th>
+			<th th:text="${ episode.description }"></th>
+			<th sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editepisode/{id}(id=${episode.id})}" class="btn btn-primary">Edit episode</a>
+			<a th:href="@{/deleteepisode/{id}(id=${episode.id})}" class="btn btn-danger">Delete episode</a></th>
+		</tr>
+
+		<tr></tr>
+	</table>
+</body>
+</html>
