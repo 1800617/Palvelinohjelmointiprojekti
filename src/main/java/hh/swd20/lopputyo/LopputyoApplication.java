@@ -33,15 +33,15 @@ public class LopputyoApplication {
 			log.info("Save categories");
 
 			// name
-			catrepo.save(new Category("Good shows"));
-			catrepo.save(new Category("Bad shows"));
+			catrepo.save(new Category("Good show"));
+			catrepo.save(new Category("Bad show"));
 
 			log.info("Save shows");
 			// title, description, category
 			shorepo.save(new Show("Santa Clarita Diet",
 					"Sheila and Joel are married real estate agents in Santa Clarita, California. "
 					+ "When Sheila dies, their lives take a dark turn. ",
-					catrepo.findByName("Bad shows").get(0)));
+					catrepo.findByName("Good show").get(0)));
 
 			shorepo.save(new Show("Teletubbies",
 					"In this television show for babies,"
@@ -51,7 +51,7 @@ public class LopputyoApplication {
 							+ "their bellies. Mysterious pinwheels and telephones rise out of the meadow to "
 							+ "loosely direct the day's activities. The Sun, featuring a baby's face, comments "
 							+ "on the proceedings with baby noises, and it rises and sets to begin and end the show.",
-					catrepo.findByName("Good shows").get(0)));
+					catrepo.findByName("Bad show").get(0)));
 			/*
 			 * log.info("Save seasons"); //title, show searepo.save(new Season("Season 1",
 			 * shorepo.findByTitle("Teletubbies").get(0)));
@@ -59,6 +59,13 @@ public class LopputyoApplication {
 
 			log.info("Save episodes");
 			// title, episodenumber, season, description, show
+			
+			epirepo.save(new Episode("So Then a Bat or A Monkey", 1,
+					"Season 1", "Joel and Sheila's marriage gets a"
+					+ " jumpstart when Sheila debuts a truly"
+					+ " killer new personality and an anything goes menu."
+					+ " And they used to be so normal.",
+					shorepo.findByTitle("Santa Clarita Diet").get(0)));
 			epirepo.save(new Episode("Ned's Bicycle", 1, "Season 1", "A flag appears in Teletubbyland.",
 					shorepo.findByTitle("Teletubbies").get(0)));
 

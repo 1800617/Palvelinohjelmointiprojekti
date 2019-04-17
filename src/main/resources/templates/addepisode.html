@@ -14,11 +14,11 @@
 	<select id="showlist" th:field="*{show}" class="form-control">
 	<option th:each="show: ${shows}" th:value="${show.id}" th:text="${show.title}">
 	</option></select></p>
-	<p>Title: <input type="text" th:field="${episode.name}" /></p>
-	<p>Season: <input type="text" th:field="${episode.season}" /></p>
-	<p>Episode number: <input type="number" th:field="${episode.episodeNumber}" /></p>
-	<p>Description: <input type="text" th:field="${episode.description}" /></p>
-	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	<p>Title: <input type="text" class="form-control" th:field="${episode.name}" /></p>
+	<p>Season: <input type="text" class="form-control" th:field="${episode.season}" /></p>
+	<p>Episode number: <input type="number" class="form-control" th:field="${episode.episodeNumber}" /></p>
+	<p>Description: <textarea rows="" cols="" class="form-control" th:field="${episode.description}"></textarea></p>
+	<input type="submit" value="Submit" class="btn" /> <input type="reset" value="Reset" class="btn" />
 	</form>
 
 </body>

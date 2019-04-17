@@ -30,20 +30,12 @@
 			Shows <a href="./addshow" class="btn btn-success">Add Show</a> <a
 				href="./addepisode" class="btn btn-success">Add Episode</a>
 		</h1>
-	</div>
-
-	</br>
-
-	<div class="col-md-4">
 		<h3 th:inline="text">Welcome
-			[[${#httpServletRequest.remoteUser}]]</h3>
-	</div>
-	</br>
-	<div class="col-md-1">
-		<form th:action="@{/logout}" method="post">
+			[[${#httpServletRequest.remoteUser}]]</h3><form th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-danger" />
 		</form>
 	</div>
+
 
 	<table th:each="show : ${ shows }" class="table" id="messytable">
 		<tr>
@@ -100,7 +92,7 @@
 		<tr class="letmehide" th:each="episode : ${show.episodes}">
 			<th th:text="${ episode.episodeNumber }"></th>
 			<th th:text="${ episode.name }"></th>
-			<th th:text="${ episode.description }"></th>
+			<td th:text="${ episode.description }"></td>
 			<th sec:authorize="hasAuthority('ADMIN')"><a
 				th:href="@{/editepisode/{id}(id=${episode.id})}"
 				class="btn btn-primary">Edit episode</a> <a

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd20.lopputyo.domain.Episode;
 import hh.swd20.lopputyo.domain.EpisodeRepository;
-import hh.swd20.lopputyo.domain.Show;
 import hh.swd20.lopputyo.domain.ShowRepository;
 
 @Controller
@@ -27,7 +26,7 @@ public class EpisodeController {
 	@Autowired
 	private EpisodeRepository epirepo;
 
-	// REST return all episode
+	// REST return all episodes
 	@GetMapping("episodes")
 	public @ResponseBody List<Episode> episodeListRest() {
 		return (List<Episode>) epirepo.findAll();

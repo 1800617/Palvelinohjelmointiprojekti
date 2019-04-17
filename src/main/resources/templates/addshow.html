@@ -3,18 +3,20 @@
 <head>
 <title>Add show</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 
 	<h1>Add show</h1>
 	<form action="#" th:action="@{/addshow}"  th:object= ${show} method="post">
-	<p>Title: <input type="text" th:field="${show.title}" /></p>
-	<p>Description: <input type="text" th:field="${show.description}" /></p>
+	<p>Title: <input type="text" class="form-control" th:field="${show.title}" /></p>
 	<p>Category:
 	<select id="categorylist" th:field="*{category}" class="form-control">
 	<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}">
 	</option></select></p>
-	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	<p>Description: <textarea rows="" cols="" class="form-control" th:field="${show.description}"></textarea></p>
+	<input type="submit" value="Submit" class="btn"/> <input type="reset" value="Reset" class="btn"/>
 	</form>
 
 </body>

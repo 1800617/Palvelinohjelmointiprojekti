@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.swd20.lopputyo.domain.Category;
 import hh.swd20.lopputyo.domain.CategoryRepository;
 import hh.swd20.lopputyo.domain.Show;
 import hh.swd20.lopputyo.domain.ShowRepository;
@@ -37,6 +36,12 @@ public class ShowController {
 	@GetMapping("/show/{id}")
 	public @ResponseBody Optional<Show> findShowRest(@PathVariable("id") Long showId) {
 		return shorepo.findById(showId);
+	}
+	
+	//redirect to list
+	@GetMapping("/")
+	public String redirect() {
+		return "/login";
 	}
 
 	// list of shows
